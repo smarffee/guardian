@@ -36,6 +36,11 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="emergency_heart_beat" domainObjectName="EmergencyHeartBeat" />
+        <!--<table tableName="heart_beat" domainObjectName="HeartBeat" />-->
+        <table tableName="metric_group" domainObjectName="MetricGroup" />
+        <table tableName="metric_sub_group" domainObjectName="MetricSubGroup" />
+        <table tableName="metric_item" domainObjectName="MetricItem" />
+        <table tableName="metric_emergency_event" domainObjectName="MetricEmergencyEvent" />
+
     </context>
 </generatorConfiguration>
