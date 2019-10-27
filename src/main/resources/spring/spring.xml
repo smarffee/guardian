@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:property-placeholder ignore-resource-not-found="true" ignore-unresolvable="false"
+                                  location="classpath*:properties/ds.properties,
+                                  classpath*:properties/rabbit.properties,
+                                  classpath*:properties/redis.properties"
+                                  system-properties-mode="ENVIRONMENT"/>
+
+    <!--Notice spring uses cglib instead of JDK to implement the proxy method AOP can intercept to Controller  -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- i18n message -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+          p:cookieMaxAge="604800" p:defaultLocale="zh_CN" p:cookieName="Language"/>
+
+    <!-- if ResourceBundleMessageSource is picked, basename has no classpath -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basename="classpath:messages/message" p:fileEncodings="UTF-8"
+          p:defaultEncoding="UTF-8" p:cacheSeconds="3600"/>
+
+    <!-- bean validator -->
+    <bean id="beanValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <import resource="ds.xml"/>
+    <import resource="redis.xml"/>
+    <import resource="rabbit.xml"/>
+
+    <!-- use config from annotation -->
+    <context:annotation-config/>
+
+</beans>

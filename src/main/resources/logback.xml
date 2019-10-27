@@ -1,0 +1,39 @@
+<configuration scan="true" scanPeriod="60 second" debug="false">
+
+    <property resource="properties/logback.properties" />
+
+    <property name="PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}]  [%thread] [%5level] %logger{0} %msg%n"/>
+
+    <!-- 负责写日志,控制台日志 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>${PATTERN}</Pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <File>${logback.logdir}/logs/${logback.appname}.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${catalina.home}/logs/${logback.appname}.%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- app logger -->
+    <logger name="com.lin" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
