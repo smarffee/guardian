@@ -10,9 +10,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AlarmMessageTask {
+public class AlarmMessageMQTask {
 
-    private static final Logger logger = LoggerFactory.getLogger(AlarmMessageTask.class);
+    private static final Logger logger = LoggerFactory.getLogger(AlarmMessageMQTask.class);
 
     @RabbitListener(queues = "guardian.send_message")
     public void sendAlarmMessag(Message message) {

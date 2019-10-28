@@ -19,9 +19,9 @@ import java.util.List;
  * Created by Lin on 2019/10/29.
  */
 @Component
-public class SaveHistoryEmergencyEventTask {
+public class SaveHistoryEmergencyEventScheduledTask {
 
-    private static final Logger logger = LoggerFactory.getLogger(SaveHistoryEmergencyEventTask.class);
+    private static final Logger logger = LoggerFactory.getLogger(SaveHistoryEmergencyEventScheduledTask.class);
 
     @Autowired
     private MetricEmergencyEventService metricEmergencyEventService;

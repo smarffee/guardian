@@ -1,5 +1,6 @@
 package com.lin.service;
 
+import com.lin.model.db.MetricItem;
 import com.lin.model.status.MetricStatusRequest;
 
 /**
@@ -12,6 +13,6 @@ public interface MetricStatusServiceService {
      *
      * @param metricStatusRequest
      */
-    void handleMetricStatus(MetricStatusRequest metricStatusRequest);
+    void handleMetricStatus(MetricItem metricItem, MetricStatusRequest metricStatusRequest);
 
 }

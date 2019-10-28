@@ -38,6 +38,7 @@ CREATE TABLE metric_item (
   `sub_group_gid` char(36) NOT NULL COMMENT '关联所属子组表',
   `create_time` int(11) NOT NULL,
   `update_time` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL COMMENT '监控项名称',
   `metric_key` varchar(250) NOT NULL COMMENT '预警项key',
   `status` int(1) NOT NULL DEFAULT '0' COMMENT '0:关闭; 1：启用',
   `deleted` int(1) NOT NULL DEFAULT '0' COMMENT '0:未删除; 1：删除',

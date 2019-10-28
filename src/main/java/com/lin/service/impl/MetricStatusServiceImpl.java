@@ -6,6 +6,7 @@ import com.lin.model.db.MetricEmergencyEvent;
 import com.lin.model.db.MetricItem;
 import com.lin.model.status.MetricStatusRequest;
 import com.lin.service.MetricEmergencyEventService;
+import com.lin.service.MetricItemService;
 import com.lin.service.MetricStatusServiceService;
 import com.lin.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,9 @@ public class MetricStatusServiceImpl implements MetricStatusServiceService {
     @Autowired
     private MetricEmergencyEventService metricEmergencyEventService;
 
-    @Autowired
-    private MetricItemDao metricItemDao;
-
     @Override
-    public void handleMetricStatus(MetricStatusRequest metricStatusRequest) {
-        MetricItem metricItem = metricItemDao.selectByMetricKey(metricStatusRequest.getMetricKey());
-        //如果没有此监控指标或者监控指标没有启用
-        if (metricItem == null ||
-                metricItem.getStatus() != Constant.MetricStatus.ENABLE) {
-            return;
-        }
+    public void handleMetricStatus(MetricItem metricItem, MetricStatusRequest metricStatusRequest) {
+
 
         //查询当前预警项的告警事件状态
         MetricEmergencyEvent metricEmergencyEvent =

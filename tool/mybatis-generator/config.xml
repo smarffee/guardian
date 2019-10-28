@@ -41,7 +41,7 @@
         <!--<table tableName="metric_sub_group" domainObjectName="MetricSubGroup" />-->
         <!--<table tableName="metric_item" domainObjectName="MetricItem" />-->
         <!--<table tableName="metric_emergency_event" domainObjectName="MetricEmergencyEvent" />-->
-        <table tableName="metric_emergency_history_event" domainObjectName="MetricEmergencyHistoryEvent" />
+        <!--<table tableName="metric_emergency_history_event" domainObjectName="MetricEmergencyHistoryEvent" />-->
         <!--<table tableName="log_event_status" domainObjectName="LogEventStatus" />-->
         <!--<table tableName="log_event_abnormal_data" domainObjectName="LogEventAbnormalData" />-->
 

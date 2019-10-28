@@ -2,8 +2,11 @@ package com.lin.task;
 
 import com.google.gson.Gson;
 import com.lin.model.QueueMessage;
+import com.lin.model.db.MetricItem;
 import com.lin.model.status.MetricStatusRequest;
+import com.lin.service.MetricItemService;
 import com.lin.service.MetricStatusServiceService;
+import com.lin.util.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
@@ -22,6 +25,9 @@ public class MetricStatusMQTask {
     @Autowired
     private MetricStatusServiceService metricStatusService;
 
+    @Autowired
+    private MetricItemService metricItemService;
+
     /**
      * 处理监控状态请求
      *
@@ -37,7 +43,14 @@ public class MetricStatusMQTask {
 
         logger.info("handleStatusUpdate: mq message is {}", metricStatusRequest);
 
-        metricStatusService.handleMetricStatus(metricStatusRequest);
+        MetricItem metricItem = metricItemService.selectByMetricKey(metricStatusRequest.getMetricKey());
+        //如果没有此监控指标或者监控指标没有启用
+        if (metricItem == null ||
+                metricItem.getStatus() != Constant.MetricStatus.ENABLE) {
+            return;
+        }
+
+        metricStatusService.handleMetricStatus(metricItem, metricStatusRequest);
 
         logger.info("<==== handleStatusUpdate: successful process mq message.");
     }
