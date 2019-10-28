@@ -21,11 +21,11 @@ public class MetricEmergencyEventDaoImpl implements MetricEmergencyEventDao {
     private MetricEmergencyEventMapper metricEmergencyEventMapper;
 
     @Override
-    public MetricEmergencyEvent selectUnSolvedEventByMetric(String metricKey) {
+    public MetricEmergencyEvent selectUnSolvedEventByMetric(String metricGid) {
 
         MetricEmergencyEventExample emergencyEventExample = new MetricEmergencyEventExample();
         emergencyEventExample.createCriteria()
-                .andMetricKeyEqualTo(metricKey)
+                .andMetricGidEqualTo(metricGid)
                 .andStatusNotEqualTo(Constant.EmergencyEventStatus.SOLEVD);
 
         List<MetricEmergencyEvent> metricEmergencyEventList = metricEmergencyEventMapper.selectByExample(emergencyEventExample);
@@ -36,6 +36,11 @@ public class MetricEmergencyEventDaoImpl implements MetricEmergencyEventDao {
     @Override
     public int saveMetricEmergencyEvent(MetricEmergencyEvent metricEmergencyEvent) {
         return metricEmergencyEventMapper.insert(metricEmergencyEvent);
+    }
+
+    @Override
+    public int updateEventAbnormalDataByGid(MetricEmergencyEvent metricEmergencyEvent) {
+        return 0;
     }
 
 }

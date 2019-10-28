@@ -7,7 +7,7 @@ import java.util.UUID;
  */
 public class Utility {
 
-    public static int getCurrentTimeStamp() {
+    public static int getCurrentSecondTimes() {
         return (int) (System.currentTimeMillis() / 1000L);
     }
 

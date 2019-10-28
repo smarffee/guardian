@@ -20,8 +20,8 @@ public interface MetricEmergencyEventService {
 
     /**
      * 根据监控项key查询正在告警事件
-     * @param metricKey
+     * @param metricGid
      * @return
      */
-    MetricEmergencyEvent selectUnSolvedEventByMetric(String metricKey);
+    MetricEmergencyEvent selectUnSolvedEventByMetric(String metricGid);
 }

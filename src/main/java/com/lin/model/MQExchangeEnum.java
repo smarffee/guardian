@@ -5,7 +5,8 @@ package com.lin.model;
  */
 public enum MQExchangeEnum {
 
-    HEART_BEAT("ex_guardian", "guardian.metric_status", "metric_status"),
+    METRIC_STATUS("ex_guardian", "guardian.metric_status", "metric_status"),
+    SEND_MESSAGE("ex_guardian", "guardian.send_message", "send_message"),
 
     ;
 

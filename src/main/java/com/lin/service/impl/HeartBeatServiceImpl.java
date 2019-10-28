@@ -27,7 +27,7 @@ public class HeartBeatServiceImpl implements HeartBeatService {
         heartBeatDao.heartBeatByKey(metricStatusRequest.getMetricKey());
 
         //发送mq消息异步处理
-        MQExchangeEnum heartBeatMQ = MQExchangeEnum.HEART_BEAT;
+        MQExchangeEnum heartBeatMQ = MQExchangeEnum.METRIC_STATUS;
         QueueMessage queueMessage = new QueueMessage(metricStatusRequest);
 
         rabbitTemplate.send(heartBeatMQ.getExchangeName(), heartBeatMQ.getQueueKey(), queueMessage.toAmqpMessage());

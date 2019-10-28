@@ -7,7 +7,9 @@ import com.lin.model.db.MetricEmergencyEvent;
  */
 public interface MetricEmergencyEventDao {
 
-    MetricEmergencyEvent selectUnSolvedEventByMetric(String metricKey);
+    MetricEmergencyEvent selectUnSolvedEventByMetric(String metricGid);
 
     int saveMetricEmergencyEvent(MetricEmergencyEvent metricEmergencyEvent);
+
+    int updateEventAbnormalDataByGid(MetricEmergencyEvent metricEmergencyEvent);
 }

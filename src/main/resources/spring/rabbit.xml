@@ -10,6 +10,7 @@
        http://www.springframework.org/schema/rabbit
         http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
 
+    <!-- connection-factory元素实际就是注册一个org.springframework.amqp.rabbit.connection.CachingConnectionFactory实例 -->
     <rabbit:connection-factory id="rabbitConnectionFactory" host="${rabbit.host}" port="${rabbit.port}"
         username="${rabbit.username}" password="${rabbit.password}" requested-heartbeat="30"
         virtual-host="${rabbit.vhost}" channel-cache-size="50"/>
@@ -24,12 +25,14 @@
     </bean>
 
     <!-- queue declare -->
-    <rabbit:queue durable="true" auto-delete="false" exclusive="false" name="guardian.heart_beat" />
+    <rabbit:queue durable="true" auto-delete="false" exclusive="false" name="guardian.metric_status" />
+    <rabbit:queue durable="true" auto-delete="false" exclusive="false" name="guardian.send_message" />
 
     <!-- bind queue to exchange -->
     <rabbit:direct-exchange name="ex_guardian" auto-delete="false" durable="true">
         <rabbit:bindings>
-            <rabbit:binding queue="guardian.heart_beat" key="heart_beat" />
+            <rabbit:binding queue="guardian.metric_status" key="metric_status" />
+            <rabbit:binding queue="guardian.send_message" key="send_message" />
         </rabbit:bindings>
     </rabbit:direct-exchange>
 

@@ -7,7 +7,6 @@ import com.lin.model.db.HeartBeatExample;
 import com.lin.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import sun.plugin2.message.HeartbeatMessage;
 
 /**
  * Created by Lin on 2019/10/27.
@@ -22,7 +21,7 @@ public class HeartBeatDaoImpl implements HeartBeatDao {
     public void heartBeatByKey(String metricKey) {
 
         HeartBeat heartBeat = new HeartBeat();
-        heartBeat.setUpdateTime(Utility.getCurrentTimeStamp());
+        heartBeat.setUpdateTime(Utility.getCurrentSecondTimes());
 
         HeartBeatExample example = new HeartBeatExample();
         example.createCriteria().andMetricKeyEqualTo(metricKey);

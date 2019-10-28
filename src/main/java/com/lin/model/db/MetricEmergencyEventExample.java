@@ -584,73 +584,73 @@ public class MetricEmergencyEventExample {
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyIsNull() {
-            addCriterion("metric_key is null");
+        public Criteria andMetricGidIsNull() {
+            addCriterion("metric_gid is null");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyIsNotNull() {
-            addCriterion("metric_key is not null");
+        public Criteria andMetricGidIsNotNull() {
+            addCriterion("metric_gid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyEqualTo(String value) {
-            addCriterion("metric_key =", value, "metricKey");
+        public Criteria andMetricGidEqualTo(String value) {
+            addCriterion("metric_gid =", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyNotEqualTo(String value) {
-            addCriterion("metric_key <>", value, "metricKey");
+        public Criteria andMetricGidNotEqualTo(String value) {
+            addCriterion("metric_gid <>", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyGreaterThan(String value) {
-            addCriterion("metric_key >", value, "metricKey");
+        public Criteria andMetricGidGreaterThan(String value) {
+            addCriterion("metric_gid >", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyGreaterThanOrEqualTo(String value) {
-            addCriterion("metric_key >=", value, "metricKey");
+        public Criteria andMetricGidGreaterThanOrEqualTo(String value) {
+            addCriterion("metric_gid >=", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyLessThan(String value) {
-            addCriterion("metric_key <", value, "metricKey");
+        public Criteria andMetricGidLessThan(String value) {
+            addCriterion("metric_gid <", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyLessThanOrEqualTo(String value) {
-            addCriterion("metric_key <=", value, "metricKey");
+        public Criteria andMetricGidLessThanOrEqualTo(String value) {
+            addCriterion("metric_gid <=", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyLike(String value) {
-            addCriterion("metric_key like", value, "metricKey");
+        public Criteria andMetricGidLike(String value) {
+            addCriterion("metric_gid like", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyNotLike(String value) {
-            addCriterion("metric_key not like", value, "metricKey");
+        public Criteria andMetricGidNotLike(String value) {
+            addCriterion("metric_gid not like", value, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyIn(List<String> values) {
-            addCriterion("metric_key in", values, "metricKey");
+        public Criteria andMetricGidIn(List<String> values) {
+            addCriterion("metric_gid in", values, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyNotIn(List<String> values) {
-            addCriterion("metric_key not in", values, "metricKey");
+        public Criteria andMetricGidNotIn(List<String> values) {
+            addCriterion("metric_gid not in", values, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyBetween(String value1, String value2) {
-            addCriterion("metric_key between", value1, value2, "metricKey");
+        public Criteria andMetricGidBetween(String value1, String value2) {
+            addCriterion("metric_gid between", value1, value2, "metricGid");
             return (Criteria) this;
         }
 
-        public Criteria andMetricKeyNotBetween(String value1, String value2) {
-            addCriterion("metric_key not between", value1, value2, "metricKey");
+        public Criteria andMetricGidNotBetween(String value1, String value2) {
+            addCriterion("metric_gid not between", value1, value2, "metricGid");
             return (Criteria) this;
         }
 

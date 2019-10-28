@@ -32,4 +32,5 @@ public class MetricItemDaoImpl implements MetricItemDao {
 
         return CollectionUtils.isEmpty(metricItemList) ? null : metricItemList.get(0);
     }
+
 }

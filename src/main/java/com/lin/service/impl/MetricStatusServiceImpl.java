@@ -27,11 +27,6 @@ public class MetricStatusServiceImpl implements MetricStatusServiceService {
 
     @Override
     public void handleMetricStatus(MetricStatusRequest metricStatusRequest) {
-        //如果监控指标状态正常
-        if (metricStatusRequest.getLevel() == EmergencyLevelEnum.OK.getLevel()) {
-            return;
-        }
-
         MetricItem metricItem = metricItemDao.selectByMetricKey(metricStatusRequest.getMetricKey());
         //如果没有此监控指标或者监控指标没有启用
         if (metricItem == null ||
@@ -39,15 +34,22 @@ public class MetricStatusServiceImpl implements MetricStatusServiceService {
             return;
         }
 
-        //查询当前告警事件状态
-        MetricEmergencyEvent metricEmergencyEvent = metricEmergencyEventService.selectUnSolvedEventByMetric(metricStatusRequest.getMetricKey());
+        //查询当前预警项的告警事件状态
+        MetricEmergencyEvent metricEmergencyEvent =
+                metricEmergencyEventService.selectUnSolvedEventByMetric(metricItem.getGid());
+
+        //如果监控指标状态正常
+        if (metricEmergencyEvent == null &&
+                metricStatusRequest.getLevel() == EmergencyLevelEnum.OK.getLevel()) {
+            return;
+        }
 
         //告警事件状态没有改变
         if (!emergencyEventChanged(metricEmergencyEvent, metricStatusRequest)) {
             return;
         }
 
-        //告警事件状态便更
+        //告警事件状态变更
         metricEmergencyEventService.emergencyEventChanged(metricEmergencyEvent, metricItem, metricStatusRequest);
     }
 
