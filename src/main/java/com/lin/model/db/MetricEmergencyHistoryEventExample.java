@@ -774,63 +774,63 @@ public class MetricEmergencyHistoryEventExample {
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeIsNull() {
-            addCriterion("close_type is null");
+        public Criteria andCloseStatusIsNull() {
+            addCriterion("close_status is null");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeIsNotNull() {
-            addCriterion("close_type is not null");
+        public Criteria andCloseStatusIsNotNull() {
+            addCriterion("close_status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeEqualTo(Integer value) {
-            addCriterion("close_type =", value, "closeType");
+        public Criteria andCloseStatusEqualTo(Integer value) {
+            addCriterion("close_status =", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeNotEqualTo(Integer value) {
-            addCriterion("close_type <>", value, "closeType");
+        public Criteria andCloseStatusNotEqualTo(Integer value) {
+            addCriterion("close_status <>", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeGreaterThan(Integer value) {
-            addCriterion("close_type >", value, "closeType");
+        public Criteria andCloseStatusGreaterThan(Integer value) {
+            addCriterion("close_status >", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeGreaterThanOrEqualTo(Integer value) {
-            addCriterion("close_type >=", value, "closeType");
+        public Criteria andCloseStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("close_status >=", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeLessThan(Integer value) {
-            addCriterion("close_type <", value, "closeType");
+        public Criteria andCloseStatusLessThan(Integer value) {
+            addCriterion("close_status <", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeLessThanOrEqualTo(Integer value) {
-            addCriterion("close_type <=", value, "closeType");
+        public Criteria andCloseStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("close_status <=", value, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeIn(List<Integer> values) {
-            addCriterion("close_type in", values, "closeType");
+        public Criteria andCloseStatusIn(List<Integer> values) {
+            addCriterion("close_status in", values, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeNotIn(List<Integer> values) {
-            addCriterion("close_type not in", values, "closeType");
+        public Criteria andCloseStatusNotIn(List<Integer> values) {
+            addCriterion("close_status not in", values, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeBetween(Integer value1, Integer value2) {
-            addCriterion("close_type between", value1, value2, "closeType");
+        public Criteria andCloseStatusBetween(Integer value1, Integer value2) {
+            addCriterion("close_status between", value1, value2, "closeStatus");
             return (Criteria) this;
         }
 
-        public Criteria andCloseTypeNotBetween(Integer value1, Integer value2) {
-            addCriterion("close_type not between", value1, value2, "closeType");
+        public Criteria andCloseStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("close_status not between", value1, value2, "closeStatus");
             return (Criteria) this;
         }
 

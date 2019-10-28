@@ -13,7 +13,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.97.129:3306/guardian" userId="root" password="123456">
+                        connectionURL="jdbc:mysql://192.168.40.134:3306/guardian" userId="root" password="123456">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -36,15 +36,14 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--<table tableName="heart_beat" domainObjectName="HeartBeat" />
-        <table tableName="metric_group" domainObjectName="MetricGroup" />
-        <table tableName="metric_sub_group" domainObjectName="MetricSubGroup" />-->
-        <table tableName="metric_item" domainObjectName="MetricItem" />
+        <!--<table tableName="heart_beat" domainObjectName="HeartBeat" />-->
+        <!--<table tableName="metric_group" domainObjectName="MetricGroup" />-->
+        <!--<table tableName="metric_sub_group" domainObjectName="MetricSubGroup" />-->
+        <!--<table tableName="metric_item" domainObjectName="MetricItem" />-->
         <!--<table tableName="metric_emergency_event" domainObjectName="MetricEmergencyEvent" />-->
-
-        <!--<table tableName="metric_emergency_history_event" domainObjectName="MetricEmergencyHistoryEvent" />
-        <table tableName="log_event_status" domainObjectName="LogEventStatus" />
-        <table tableName="log_event_abnormal_data" domainObjectName="LogEventAbnormalData" />-->
+        <table tableName="metric_emergency_history_event" domainObjectName="MetricEmergencyHistoryEvent" />
+        <!--<table tableName="log_event_status" domainObjectName="LogEventStatus" />-->
+        <!--<table tableName="log_event_abnormal_data" domainObjectName="LogEventAbnormalData" />-->
 
     </context>
 </generatorConfiguration>

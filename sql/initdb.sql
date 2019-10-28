@@ -58,7 +58,7 @@ CREATE TABLE metric_emergency_event (
   `update_time` int(11) NOT NULL,
   `metric_gid`    char(36) NOT NULL COMMENT '预警项唯一标识',
   `status` int(1) NOT NULL DEFAULT '0' COMMENT '告警状态 0:未处理; 1:处理中; 2:关闭',
-  `level` int(1) NOT NULL DEFAULT '-1' COMMENT '告警级别 0:正常 1:一级 2:二级 3:三级 4:四级',
+  `level` int(1) NOT NULL DEFAULT '0' COMMENT '告警级别 -1:失效 0:正常 1:一级 2:二级 3:三级 4:四级',
   `description` varchar(512) DEFAULT NULL COMMENT '告警描述',
   `abnormal_num` int(11) NOT NULL DEFAULT 0 COMMENT '告警异常数据值',
   `abnormal_data` varchar(8192) DEFAULT NULL COMMENT '告警异常数据',
@@ -77,7 +77,7 @@ create table metric_emergency_history_event(
   `metric_gid`    char(36) NOT NULL COMMENT '预警项唯一标识',
   `begin_time`    INT(11)  NOT NULL COMMENT '开始告警时间',
   `close_time`    INT(11)  NOT NULL COMMENT '告警结束时间',
-  `close_type`    int(1)   NOT NULL DEFAULT '0' COMMENT '告警关闭方式 1:自动关闭 2:手动关闭',
+  `close_status`  int(1) NOT NULL DEFAULT '0' COMMENT '关闭时告警状态 0:未处理; 1:处理中; 2:关闭',
   `remark`        varchar(255)      default null,
    PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='历史告警表';
