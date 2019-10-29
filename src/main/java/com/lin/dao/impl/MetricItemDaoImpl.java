@@ -26,6 +26,7 @@ public class MetricItemDaoImpl implements MetricItemDao {
         MetricItemExample example = new MetricItemExample();
         example.createCriteria()
                 .andMetricKeyEqualTo(metricKey)
+                .andStatusEqualTo(Constant.MetricStatus.ENABLE)
                 .andDeletedEqualTo(Constant.YesOrNo.NO);
 
         List<MetricItem> metricItemList = metricItemMapper.selectByExample(example);

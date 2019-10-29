@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
@@ -23,8 +24,8 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableScheduling
 @EnableAsync
 @EnableCaching
+@EnableTransactionManagement
 @ImportResource({"classpath*:spring/spring.xml"})
-@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class})
 public class GuardianApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

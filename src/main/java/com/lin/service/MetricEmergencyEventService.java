@@ -1,5 +1,7 @@
 package com.lin.service;
 
+import com.lin.model.db.LogEventAbnormalData;
+import com.lin.model.db.LogEventStatus;
 import com.lin.model.db.MetricEmergencyEvent;
 import com.lin.model.db.MetricItem;
 import com.lin.model.status.MetricStatusRequest;
@@ -10,15 +12,6 @@ import java.util.List;
  * Created by Lin on 2019/10/28.
  */
 public interface MetricEmergencyEventService {
-
-    /**
-     * 告警事件状态发生改变
-     *
-     * @param currentEvent 当前告警事件
-     * @param metricItem 监控项
-     * @param metricStatusRequest 异常数据请求
-     */
-    void emergencyEventChanged(MetricEmergencyEvent currentEvent, MetricItem metricItem, MetricStatusRequest metricStatusRequest);
 
     /**
      * 根据监控项gid查询正在告警事件
@@ -40,4 +33,24 @@ public interface MetricEmergencyEventService {
      * @return
      */
     int deleteByGid(String gid);
+
+    /**
+     * 保存新的告警事件
+     * @param newEvent
+     * @param logEventStatus
+     * @param logEventAbnormalData
+     * @return
+     */
+    boolean saveNewEmergencyEvent(MetricEmergencyEvent newEvent, LogEventStatus logEventStatus, LogEventAbnormalData logEventAbnormalData);
+
+    /**
+     * 更新告警事件
+     *
+     * @param updateEvent
+     * @param logEventStatus
+     * @param logEventAbnormalData
+     * @return
+     */
+    boolean updateAbnormalData(MetricEmergencyEvent updateEvent, MetricEmergencyEvent oldEvent, LogEventStatus logEventStatus, LogEventAbnormalData logEventAbnormalData);
+
 }

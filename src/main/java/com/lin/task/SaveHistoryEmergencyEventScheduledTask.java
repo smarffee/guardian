@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
+ * 保存历史告警信息
  * Created by Lin on 2019/10/29.
  */
 @Component
@@ -51,6 +52,8 @@ public class SaveHistoryEmergencyEventScheduledTask {
 
     @Transactional(rollbackFor = Exception.class)
     public boolean saveHistoryEvent(MetricEmergencyHistoryEvent historyEvent) {
+
+        logger.info("saveHistoryEvent: start to save history event. historyEvent is {}", historyEvent);
 
         int num = metricEmergencyEventService.deleteByGid(historyEvent.getGid());
         if (num == 1) {

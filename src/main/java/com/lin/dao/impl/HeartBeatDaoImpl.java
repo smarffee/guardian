@@ -20,7 +20,7 @@ public class HeartBeatDaoImpl implements HeartBeatDao {
     private HeartBeatMapper heartBeatMapper;
 
     @Override
-    public void heartBeatByKey(String metricKey) {
+    public int heartBeatByKey(String metricKey) {
 
         HeartBeat heartBeat = new HeartBeat();
         heartBeat.setUpdateTime(Utility.getCurrentSecondTimes());
@@ -28,7 +28,7 @@ public class HeartBeatDaoImpl implements HeartBeatDao {
         HeartBeatExample example = new HeartBeatExample();
         example.createCriteria().andMetricKeyEqualTo(metricKey);
 
-        heartBeatMapper.updateByExampleSelective(heartBeat, example);
+        return heartBeatMapper.updateByExampleSelective(heartBeat, example);
     }
 
     @Override
@@ -37,11 +37,11 @@ public class HeartBeatDaoImpl implements HeartBeatDao {
     }
 
     @Override
-    public List<HeartBeat> selectHeartBeatByUpdateTime(int beginTimes, int endTimes) {
+    public List<HeartBeat> selectHeartBeatByUpdateTime(int cutOffTimes) {
 
         HeartBeatExample example = new HeartBeatExample();
         example.createCriteria()
-                .andUpdateTimeBetween(beginTimes, endTimes);
+                .andUpdateTimeLessThan(cutOffTimes);
 
         return heartBeatMapper.selectByExample(example);
     }

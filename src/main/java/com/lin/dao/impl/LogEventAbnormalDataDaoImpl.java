@@ -14,7 +14,7 @@ public class LogEventAbnormalDataDaoImpl implements LogEventAbnormalDataDao {
 
     @Override
     public int saveLogEventAbnormalData(LogEventAbnormalData logEventAbnormalData) {
-        return 0;
+        return logEventAbnormalDataMapper.insert(logEventAbnormalData);
     }
 
 }

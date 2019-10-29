@@ -2,6 +2,8 @@ package com.lin.model;
 
 import com.google.gson.Gson;
 import com.lin.exception.GuardianException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 
@@ -12,6 +14,8 @@ import java.util.UUID;
  * Created by Lin on 2019/10/27.
  */
 public class QueueMessage {
+
+    private static final Logger logger = LoggerFactory.getLogger(QueueMessage.class);
 
     private String msgId;
 
@@ -27,6 +31,7 @@ public class QueueMessage {
     }
 
     public QueueMessage(Object payload) {
+        msgId = UUID.randomUUID().toString();
         this.payload = new Gson().toJson(payload);
     }
 
@@ -35,6 +40,7 @@ public class QueueMessage {
         QueueMessage msg;
         try {
             msg = gson.fromJson(new String(message.getBody(), "utf-8"), QueueMessage.class);
+            logger.info("fromAmqpMessage: the msgId is [{}]", msg.getMsgId());
         } catch (UnsupportedEncodingException e) {
             throw new GuardianException(MessageEnum.SYSTEM_ERROR);
         }
@@ -46,6 +52,7 @@ public class QueueMessage {
         Message message;
         try {
             message = MessageBuilder.withBody(gson.toJson(this).getBytes("UTF-8")).build();
+            logger.info("toAmqpMessage: the msgId is [{}]", this.getMsgId());
         } catch (UnsupportedEncodingException e) {
             throw new GuardianException(MessageEnum.SYSTEM_ERROR);
         }
@@ -72,5 +79,13 @@ public class QueueMessage {
 
     public void setPayload(String payload) {
         this.payload = payload;
+    }
+
+    @Override
+    public String toString() {
+        return "QueueMessage{" +
+                "msgId='" + msgId + '\'' +
+                ", payload='" + payload + '\'' +
+                '}';
     }
 }

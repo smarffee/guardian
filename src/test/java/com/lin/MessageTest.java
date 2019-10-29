@@ -17,10 +17,10 @@ public class MessageTest extends BaseTest {
     @Test
     public void messageTest() {
 
-        String cnMsg = messageSource.getMessage("test.hello", new Object[]{}, Locale.SIMPLIFIED_CHINESE);
+        String cnMsg = messageSource.getMessage("response.success", new Object[]{}, Locale.SIMPLIFIED_CHINESE);
         System.out.println(cnMsg);
 
-        String usMsg = messageSource.getMessage("test.hello", new Object[]{}, Locale.ENGLISH);
+        String usMsg = messageSource.getMessage("response.success", new Object[]{}, Locale.ENGLISH);
         System.out.println(usMsg);
 
     }

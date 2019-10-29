@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface HeartBeatDao {
 
-    void heartBeatByKey(String metricKey);
+    int heartBeatByKey(String metricKey);
 
     int saveHeartBeat(HeartBeat heartBeat);
 
-    List<HeartBeat> selectHeartBeatByUpdateTime(int beginTimes, int endTimes);
+    List<HeartBeat> selectHeartBeatByUpdateTime(int cutOffTimes);
 }

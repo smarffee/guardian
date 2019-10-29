@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * 处理监控项状态变更请求
  * Created by Lin on 2019/10/27.
  */
 @Component
@@ -36,12 +37,10 @@ public class MetricStatusMQTask {
     @RabbitListener(queues = "guardian.metric_status")
     public void handleStatusUpdate(Message message) {
 
-        logger.info("====> handleStatusUpdate: recieve mq message. start to process.");
-
         QueueMessage queueMessage = QueueMessage.fromAmqpMessage(message);
         MetricStatusRequest metricStatusRequest = (new Gson()).fromJson(queueMessage.getPayload(), MetricStatusRequest.class);
 
-        logger.info("handleStatusUpdate: mq message is {}", metricStatusRequest);
+        logger.info("====> handleStatusUpdate: mq message is {}", queueMessage);
 
         MetricItem metricItem = metricItemService.selectByMetricKey(metricStatusRequest.getMetricKey());
         //如果没有此监控指标或者监控指标没有启用
@@ -52,7 +51,7 @@ public class MetricStatusMQTask {
 
         metricStatusService.handleMetricStatus(metricItem, metricStatusRequest);
 
-        logger.info("<==== handleStatusUpdate: successful process mq message.");
+        logger.info("<==== handleStatusUpdate: successful process mq message. mq message is {}", metricStatusRequest);
     }
 
 }

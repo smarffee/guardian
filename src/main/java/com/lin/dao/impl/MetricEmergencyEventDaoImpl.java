@@ -39,14 +39,14 @@ public class MetricEmergencyEventDaoImpl implements MetricEmergencyEventDao {
     }
 
     @Override
-    public int updateAbnormalDataByGidAndStatus(MetricEmergencyEvent metricEmergencyEvent) {
+    public int updateAbnormalData(MetricEmergencyEvent updateEvent, MetricEmergencyEvent oldEvent) {
 
         MetricEmergencyEventExample example = new MetricEmergencyEventExample();
         example.createCriteria()
-                .andGidEqualTo(metricEmergencyEvent.getGid())
-                .andStatusEqualTo(metricEmergencyEvent.getStatus());
+                .andGidEqualTo(oldEvent.getGid())
+                .andStatusEqualTo(oldEvent.getStatus());
 
-        return metricEmergencyEventMapper.updateByExampleSelective(metricEmergencyEvent, example);
+        return metricEmergencyEventMapper.updateByExampleSelective(updateEvent, example);
     }
 
     @Override

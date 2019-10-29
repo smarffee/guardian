@@ -44,13 +44,13 @@ public class MetricStatusController {
                 throw new GuardianException(MessageEnum.METRIC_KEY_IS_NULL);
             }
 
-            if (EmergencyLevelEnum.validCode(metricStatusRequest.getLevel())) {
+            if (!EmergencyLevelEnum.validCode(metricStatusRequest.getLevel())) {
                 throw new GuardianException(MessageEnum.METRIC_LEVEL_ILLEGAL);
             }
 
             heartBeatService.doHeartBeat(metricStatusRequest);
 
-            guardianResponse = MessageUtility.getErrorResponse(MessageEnum.SUCCESS, messageSource);
+            guardianResponse = MessageUtility.getSuccessResponse(messageSource);
 
         } catch (GuardianException e) {
             logger.error("metricStatus: happen an guardian exception.", e);

@@ -22,7 +22,6 @@ public enum EmergencyLevelEnum {
         for (EmergencyLevelEnum emergencyLevelEnum : EmergencyLevelEnum.values()) {
             if (emergencyLevelEnum.getLevel() == level) {
                 return true;
-
             }
         }
 

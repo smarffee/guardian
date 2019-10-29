@@ -14,7 +14,7 @@ public class LogEventStatusDaoImpl implements LogEventStatusDao {
 
     @Override
     public int saveLogEventStatus(LogEventStatus logEventStatus) {
-        return 0;
+        return logEventStatusMapper.insert(logEventStatus);
     }
 
 }

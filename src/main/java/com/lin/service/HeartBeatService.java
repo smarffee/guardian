@@ -28,9 +28,8 @@ public interface HeartBeatService {
     /**
      * 根据更新事件查询心跳
      *
-     * @param beginTimes
-     * @param endTimes
+     * @param cutOffTimes
      * @return
      */
-    List<HeartBeat> selectHeartBeatByUpdateTime(int beginTimes, int endTimes);
+    List<HeartBeat> selectUnHeartBeatByUpdateTime(int cutOffTimes);
 }

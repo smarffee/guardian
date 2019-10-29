@@ -352,4 +352,21 @@ public class MetricEmergencyHistoryEvent {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
+
+    @Override
+    public String toString() {
+        return "MetricEmergencyHistoryEvent{" +
+                "id=" + id +
+                ", gid='" + gid + '\'' +
+                ", groupGid='" + groupGid + '\'' +
+                ", subGroupGid='" + subGroupGid + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", metricGid='" + metricGid + '\'' +
+                ", beginTime=" + beginTime +
+                ", closeTime=" + closeTime +
+                ", closeStatus=" + closeStatus +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
 }

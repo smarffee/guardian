@@ -24,11 +24,13 @@ public interface MetricEmergencyEventDao {
     int saveMetricEmergencyEvent(MetricEmergencyEvent metricEmergencyEvent);
 
     /**
-     * 根据 gid和status 更新告警事件的异常数据
-     * @param metricEmergencyEvent
+     * 更新告警事件状态
+     *
+     * @param updateEvent
+     * @param oldEvent
      * @return
      */
-    int updateAbnormalDataByGidAndStatus(MetricEmergencyEvent metricEmergencyEvent);
+    int updateAbnormalData(MetricEmergencyEvent updateEvent, MetricEmergencyEvent oldEvent);
 
     /**
      * 查询已经关闭的告警事件
