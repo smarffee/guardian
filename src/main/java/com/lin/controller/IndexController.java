@@ -13,6 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @RequestMapping("/")
+    public ModelAndView welcome(HttpServletRequest request) {
+        String name = request.getParameter("name");
+
+        ModelAndView modelAndView = new ModelAndView("welcome");
+        modelAndView.addObject("name", name);
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/index")
     public ModelAndView index(HttpServletRequest request) {
         String name = request.getParameter("name");
 
@@ -21,5 +31,6 @@ public class IndexController {
 
         return modelAndView;
     }
+
 
 }

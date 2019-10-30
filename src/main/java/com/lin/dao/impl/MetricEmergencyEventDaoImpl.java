@@ -4,6 +4,7 @@ import com.lin.dao.MetricEmergencyEventDao;
 import com.lin.dao.mapper.guardian.MetricEmergencyEventMapper;
 import com.lin.model.db.MetricEmergencyEvent;
 import com.lin.model.db.MetricEmergencyEventExample;
+import com.lin.model.event.EmergencyEventListResponse;
 import com.lin.util.Constant;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,15 @@ public class MetricEmergencyEventDaoImpl implements MetricEmergencyEventDao {
                 .andGidEqualTo(gid);
 
         return metricEmergencyEventMapper.deleteByExample(example);
+    }
+
+    @Override
+    public List<MetricEmergencyEvent> selectAllUnSolvedEvent() {
+        MetricEmergencyEventExample example = new MetricEmergencyEventExample();
+        example.createCriteria()
+                .andStatusNotEqualTo(Constant.EmergencyEventStatus.SOLEVD);
+
+        return metricEmergencyEventMapper.selectByExample(example);
     }
 
 }

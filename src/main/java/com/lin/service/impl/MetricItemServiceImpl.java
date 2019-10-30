@@ -6,6 +6,8 @@ import com.lin.service.MetricItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Lin on 2019/10/29.
  */
@@ -18,6 +20,11 @@ public class MetricItemServiceImpl implements MetricItemService {
     @Override
     public MetricItem selectByMetricKey(String metricKey) {
         return metricItemDao.selectByMetricKey(metricKey);
+    }
+
+    @Override
+    public List<MetricItem> selectByMetricGid(List<String> metricGid) {
+        return metricItemDao.selectByMetricGid(metricGid);
     }
 
 }

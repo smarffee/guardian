@@ -1,6 +1,7 @@
 package com.lin.dao;
 
 import com.lin.model.db.MetricEmergencyEvent;
+import com.lin.model.event.EmergencyEventListResponse;
 
 import java.util.List;
 
@@ -45,4 +46,11 @@ public interface MetricEmergencyEventDao {
      * @return
      */
     int deleteByGid(String gid);
+
+    /**
+     * 查询所有未关闭的告警
+     * @return
+     */
+    List<MetricEmergencyEvent> selectAllUnSolvedEvent();
+
 }

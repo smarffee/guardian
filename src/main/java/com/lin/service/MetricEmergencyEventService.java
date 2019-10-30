@@ -4,6 +4,7 @@ import com.lin.model.db.LogEventAbnormalData;
 import com.lin.model.db.LogEventStatus;
 import com.lin.model.db.MetricEmergencyEvent;
 import com.lin.model.db.MetricItem;
+import com.lin.model.event.EmergencyEventListResponse;
 import com.lin.model.status.MetricStatusRequest;
 
 import java.util.List;
@@ -52,5 +53,12 @@ public interface MetricEmergencyEventService {
      * @return
      */
     boolean updateAbnormalData(MetricEmergencyEvent updateEvent, MetricEmergencyEvent oldEvent, LogEventStatus logEventStatus, LogEventAbnormalData logEventAbnormalData);
+
+    /**
+     * 查询所有未关闭的告警
+     *
+     * @return
+     */
+    EmergencyEventListResponse selectAllUnSolvedEvent();
 
 }

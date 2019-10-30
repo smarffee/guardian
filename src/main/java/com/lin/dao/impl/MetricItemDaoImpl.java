@@ -34,4 +34,14 @@ public class MetricItemDaoImpl implements MetricItemDao {
         return CollectionUtils.isEmpty(metricItemList) ? null : metricItemList.get(0);
     }
 
+    @Override
+    public List<MetricItem> selectByMetricGid(List<String> metricGid) {
+
+        MetricItemExample example = new MetricItemExample();
+        example.createCriteria()
+                .andGidIn(metricGid);
+
+        return metricItemMapper.selectByExample(example);
+    }
+
 }
